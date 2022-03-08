@@ -1,16 +1,14 @@
-import React from 'react';
-import LogoHibrido from './assets/logo-hibrido.svg'; 
-import styled from 'styled-components';
-import { GlobalStyle } from './styles/global';
-import {Header} from './components/Header';
+import { GlobalStyle } from "./styles/global";
+import { Header } from "./components/Header";
+import { Main } from "./components/Main";
+import "../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
 function App() {
   return (
     <>
-        <GlobalStyle />
-        <Header />
-        <h1>Hibrido Store</h1>
-        <img src={LogoHibrido} className="App-logo" alt="logo" />
+      <GlobalStyle />
+      <Header />
+      <Main />
     </>
   );
 }
