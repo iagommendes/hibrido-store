@@ -41,6 +41,22 @@ export const ProductDetails = styled.div`
     width: 380px;
     height: 500px;
     justify-content: space-between;
+
+    h3  {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 1.2rem;
+
+    }
+
+    .product-price {
+        font-weight: 600;
+        font-size: 2.5rem;
+    }
+
 `;
 
 export const ProductRow = styled.div`

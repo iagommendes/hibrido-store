@@ -6,30 +6,56 @@ import {
   ProductRow,
   Share,
 } from "./style";
-import starIcon from "../../assets/staricon.svg";
 import facebookIcon from "../../assets/icons8-facebook.svg";
 import WppIcon from "../../assets/icons8-whatsapp.svg";
 import PinterestIcon from "../../assets/icons8-pinterest.svg";
 import ImageGallery from "react-image-gallery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const n = 5;
+import ReactStars from "react-stars";
+
 const x = 2;
-
-const images = [
-  {
-    original: "https://picsum.photos/id/1/600/600",
-  },
-  {
-    original: "https://picsum.photos/id/2/600/600",
-  },
-  {
-    original: "https://picsum.photos/id/3/600/600",
-  },
-];
 
 export function ProductGallery() {
   const [freeShip, setFreeShip] = useState(1);
+
+  interface Product {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+    rating: {
+      count: number;
+      rate: number;
+    };
+  }
+
+  const [product, setProducts] = useState<Product>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("https://fakestoreapi.com/products/1");
+      setProducts(await response.json());
+    };
+    fetchData();
+  }, []);
+
+  const images = [
+    {
+      original: `${product?.image}`,
+    },
+    {
+      original: `${product?.image}`,
+    },
+    {
+      original: `${product?.image}`,
+    },
+  ];
+
+  const nota = product?.rating.rate;
+  console.log(nota);
 
   const addshippingFlag = () => {
     setFreeShip(freeShip + 1);
@@ -40,6 +66,8 @@ export function ProductGallery() {
       setFreeShip(freeShip - 1);
     }
   };
+
+  console.log(product);
 
   return (
     <Container>
@@ -59,14 +87,13 @@ export function ProductGallery() {
         />
       </ProductImage>
       <ProductDetails>
-        <h3>Work Shirt</h3>
+        <h3>{product?.title || ""}</h3>
+
         <div>
-          {[...Array(n)].map((_, i) => (
-            <img width={20} key={i} src={starIcon} alt="star" />
-          ))}
+          <ReactStars size={24} value={nota} edit={false} />
         </div>
-        <p> $19.99</p>
-        <p>Up to 3x $9.60, 1% of interest</p>
+
+        <p className="product-price">$ {product?.price}</p>
         <hr></hr>
         <p>Product Refenrece: 123456789</p>
         <p>Product Color: Black</p>
