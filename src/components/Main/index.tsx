@@ -1,10 +1,10 @@
-import { ProductGallery } from "../ProductGallery";
+import { Product } from "../Product";
 import { Container } from "./style";
 
 export function Main() {
-    return(
-        <Container>
-            <ProductGallery></ProductGallery>
-        </Container>
-    )
+  return (
+    <Container>
+      <Product></Product>
+    </Container>
+  );
 }
