@@ -16,18 +16,22 @@ export const Counter = () => {
   return (
     <StyledCounter>
       <p>Product Quantity: {freeShip}</p>
-      <button onClick={removeShippingFlag}>remove</button>
-      <input
-        value={freeShip}
-        type="number"
-        id="quantity"
-        name="quantity"
-        min="1"
-        max="5"
-      />
-      <button onClick={addshippingFlag}>add</button>
 
-      {freeShip > 10 ? <span>FREE SHIPPING</span> : <span></span>}
+      <div>
+        <button onClick={removeShippingFlag}>-</button>
+        <input
+          value={freeShip}
+          type="number"
+          id="quantity"
+          name="quantity"
+          min="1"
+          max="5"
+        />
+        <button onClick={addshippingFlag}>+</button>
+      </div>
+
+
+      {freeShip > 10 ? <span>free shipping!</span> : <span></span>}
     </StyledCounter>
   );
 };

@@ -5,13 +5,11 @@ import { Share } from "./style";
 
 export const Social = () => {
   return (
-    <div>
+    <Share>
       <p>Share</p>
-      <Share>
-        <img src={facebookIcon} alt="teste" />
-        <img src={WppIcon} alt="teste" />
-        <img src={PinterestIcon} alt="teste" />
-      </Share>
-    </div>
+      <img src={facebookIcon} alt="teste" />
+      <img src={WppIcon} alt="teste" />
+      <img src={PinterestIcon} alt="teste" />
+    </Share>
   );
 };

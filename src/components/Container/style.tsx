@@ -35,5 +35,7 @@ export const StyledContainer = styled.div<Props>`
     ${opacity}
     ${gridTemplateColumns}
     ${boxShadow}
+
+
 }
 `;

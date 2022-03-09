@@ -9,8 +9,11 @@ import { Counter } from "../Counter";
 import { Social } from "../Social";
 import { ZipInfo } from "../ZipInfo/style";
 import { Button } from "../Button";
+import { Zip } from "../ZipInfo";
+import { isMobile } from 'react-device-detect';
 
 export const ProductDetails = () => {
+
   interface Product {
     id: number;
     title: string;
@@ -39,10 +42,13 @@ export const ProductDetails = () => {
       original: `${product?.image}`,
     },
     {
-      original: `${product?.image}`,
+      original: "https://i.ibb.co/bdBJf8Z/mochila-blac.png",
     },
     {
-      original: `${product?.image}`,
+      original: "https://i.ibb.co/n1Pvm5r/mochila-gray.png",
+    },
+    {
+      original: "https://i.ibb.co/rw17Z7W/mochila-yellow.png",
     },
   ];
 
@@ -52,8 +58,9 @@ export const ProductDetails = () => {
       margin="0 auto"
       padding="2rem 1.5rem"
       display="flex"
-      width="1240px"
+      width={isMobile ? "100%" : "1240px"}
       justifyContent="space-between"
+      flexDirection={["column", "column", "row"]}
     >
       <ProductVariants />
       <ReactImageGallery
@@ -64,9 +71,9 @@ export const ProductDetails = () => {
         showBullets={true}
       />
       <StyledProductDetails>
-        <Text value={product?.title} />
-        <ReactStars size={24} value={product?.rating.rate} edit={false} />
-        <Text color="#000" value={product?.price}></Text>
+        <Text size="2rem" weight="600" value={product?.title} />
+        <ReactStars size={36} value={product?.rating.rate} edit={false} />
+        <Text size="2rem" color="#000" value={product?.price}></Text>
         <Text value={product?.description}></Text>
         <hr></hr>
         <Text value="Reference: 00000001"></Text>
@@ -79,7 +86,7 @@ export const ProductDetails = () => {
         />
         <Counter />
         <Button value={"add to cart"} disabled={false} />
-        <ZipInfo />
+        <Zip />
         <Social />
       </StyledProductDetails>
     </Container>
